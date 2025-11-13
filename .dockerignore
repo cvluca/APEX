@@ -1,0 +1,8 @@
+build/
+artifacts/plot/.venv/
+artifacts/results_quick/
+artifacts/results_full/
+artifacts/plot/data_quick/
+artifacts/plot/data_full/
+artifacts/plot/output_quick/
+artifacts/plot/output_full/

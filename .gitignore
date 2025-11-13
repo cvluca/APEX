@@ -1,0 +1,50 @@
+**/.DS_Store
+
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+build
+
+.ccls-cache
+compile_commands.json
+
+paper
+
+# Artifact evaluation outputs
+artifacts/results_quick/
+artifacts/results_full/
+artifacts/plot/data_quick/
+artifacts/plot/data_full/
+artifacts/plot/output_quick/
+artifacts/plot/output_full/
+artifacts/plot/.venv/

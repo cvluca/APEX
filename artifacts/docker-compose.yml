@@ -1,0 +1,16 @@
+services:
+  quick:
+    build: ..
+    command: ./artifacts/run.sh --quick
+    volumes:
+      - ./results_quick:/apex/artifacts/results_quick
+      - ./plot/output_quick:/apex/artifacts/plot/output_quick
+      - ./plot/data_quick:/apex/artifacts/plot/data_quick
+
+  full:
+    build: ..
+    command: ./artifacts/run.sh
+    volumes:
+      - ./results_full:/apex/artifacts/results_full
+      - ./plot/output_full:/apex/artifacts/plot/output_full
+      - ./plot/data_full:/apex/artifacts/plot/data_full
