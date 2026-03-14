@@ -1,5 +1,7 @@
 # APEX: Accurate Parallel Expressive Homomorphic Execution for Encrypted Databases
 
+[![DOI](https://zenodo.org/badge/1095803914.svg)](https://doi.org/10.5281/zenodo.19015340)
+
 > [!NOTE]
 > For reproducing the experimental results from the paper (IEEE S&P 2026), see [ARTIFACT.md](ARTIFACT.md).
 
