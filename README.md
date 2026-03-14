@@ -1,8 +1,7 @@
 # APEX: Accurate Parallel Expressive Homomorphic Execution for Encrypted Databases
 
-## Artifact Evaluation
-
-For reproducing the experimental results from the paper (IEEE S&P 2026), see [ARTIFACT.md](ARTIFACT.md).
+> [!NOTE]
+> For reproducing the experimental results from the paper (IEEE S&P 2026), see [ARTIFACT.md](ARTIFACT.md).
 
 ## Project Structure
 
