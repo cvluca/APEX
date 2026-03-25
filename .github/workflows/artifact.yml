@@ -1,0 +1,20 @@
+name: Artifact Build
+
+on:
+  push:
+    tags: ['v*']
+
+jobs:
+  artifact-build:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Download release source archive
+        env:
+          REPO: ${{ github.repository }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          curl -sL "https://github.com/${REPO}/archive/refs/tags/${TAG}.tar.gz" | tar xz
+          mv *APEX* apex-source
+
+      - name: Build Docker image from archive
+        run: docker build -t apex-test ./apex-source
