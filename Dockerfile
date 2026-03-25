@@ -23,7 +23,14 @@ WORKDIR /apex
 COPY . .
 
 # Initialize submodules (OpenFHE)
-RUN git submodule update --init --recursive
+# Fallback: if built from a Zenodo archive (not a git repo), clone OpenFHE directly
+RUN if [ -d .git ]; then \
+      git submodule update --init --recursive; \
+    elif [ ! -f third-party/openfhe-development/CMakeLists.txt ]; then \
+      git clone --depth 1 --branch v1.3.0 \
+        https://github.com/openfheorg/openfhe-development.git \
+        third-party/openfhe-development; \
+    fi
 
 # Build APEX
 RUN cmake -S . -B build \

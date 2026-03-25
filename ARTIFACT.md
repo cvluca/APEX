@@ -61,10 +61,22 @@ sudo apt-get update
 sudo apt-get install -y build-essential g++-13 cmake git python3
 ```
 
-**Build:**
+**Build (from GitHub):**
 ```bash
 git clone --recursive https://github.com/cvluca/APEX.git
 cd APEX
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DWITH_OPENMP=OFF
+cmake --build build -j$(nproc)
+```
+
+**Build (from Zenodo archive):**
+```bash
+cd APEX  # enter the extracted directory
+# Clone the OpenFHE dependency (not included in the archive)
+git clone --depth 1 --branch v1.3.0 \
+  https://github.com/openfheorg/openfhe-development.git \
+  third-party/openfhe-development
+
 cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DWITH_OPENMP=OFF
 cmake --build build -j$(nproc)
 ```
