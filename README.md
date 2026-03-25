@@ -1,6 +1,8 @@
 # APEX: Accurate Parallel Expressive Homomorphic Execution for Encrypted Databases
 
 [![DOI](https://zenodo.org/badge/1095803914.svg)](https://doi.org/10.5281/zenodo.19015340)
+[![Build](https://github.com/cvluca/APEX/actions/workflows/build.yml/badge.svg)](https://github.com/cvluca/APEX/actions/workflows/build.yml)
+[![Artifact Build](https://github.com/cvluca/APEX/actions/workflows/docker.yml/badge.svg)](https://github.com/cvluca/APEX/actions/workflows/docker.yml)
 
 > [!NOTE]
 > For reproducing the experimental results from the paper (IEEE S&P 2026), see [ARTIFACT.md](ARTIFACT.md).
