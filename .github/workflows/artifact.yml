@@ -5,7 +5,7 @@ on:
     tags: ['v*']
 
 jobs:
-  docker-build-archive:
+  artifact-build:
     runs-on: ubuntu-24.04
     steps:
       - name: Download release source archive
