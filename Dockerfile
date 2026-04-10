@@ -33,9 +33,12 @@ RUN if [ -d .git ]; then \
     fi
 
 # Build APEX
+# WITH_OPENMP defaults to OFF to match the single-threaded evaluation in the paper.
+# Override with: docker build --build-arg WITH_OPENMP=ON
+ARG WITH_OPENMP=OFF
 RUN cmake -S . -B build \
     -DCMAKE_BUILD_TYPE=Release \
-    -DWITH_OPENMP=OFF \
+    -DWITH_OPENMP=${WITH_OPENMP} \
     && cmake --build build -j$(nproc)
 
 # Set library path for OpenFHE shared libraries

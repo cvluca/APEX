@@ -25,7 +25,7 @@ The following claims from the paper can be verified with this artifact:
 | C6 | APEX achieves effective lazy carry propagation for consecutive arithmetic | §7.4 | Lazy carry benchmarks | Amortized cost reduces with more additions; range balancing improves performance; trends match **Figure 9, Table 7** |
 
 > [!NOTE]
-> This artifact includes only the APEX implementation. Relative speedup claims should be validated against the baseline numbers reported in the paper (from prior papers and our same-hardware measurements).
+> This artifact (source code and generated plots) includes only the APEX implementation in either quick or full mode. Relative speedup claims should be validated against the baseline numbers reported in the paper (from prior papers and our same-hardware measurements).
 
 ## Hardware Requirements
 
@@ -51,6 +51,19 @@ cd artifacts && docker compose run --rm full
 > On macOS/Windows, Docker typically runs inside a VM with limited memory. Ensure the VM is allocated at least 32 GB of RAM (e.g., in Docker Desktop: **Settings → Resources**; for Colima: `colima start --memory 32`). If a benchmark is killed during execution, insufficient VM memory is the most likely cause. On Linux, Docker uses host memory directly and no adjustment is needed.
 
 Results (CSV) and plots (PDF) are automatically saved to the host under `artifacts/results_{quick,full}/` and `artifacts/plot/output_{quick,full}/`.
+
+> [!IMPORTANT]
+> **Quick mode is intended for functional validation, not full performance reproduction.** It reduces the ring dimension to N=2^7 for most benchmarks (TPC-H, hybrid queries, comparison, lazy carry) so they finish in minutes instead of hours; storage analysis still uses N=2^16. Most trends in the generated plots remain consistent with the paper, but a few cases may show minor differences because fixed per-operation overheads are amortized over fewer SIMD slots. Run `full` mode for the exact configuration used in the paper.
+
+> [!NOTE]
+> **Multi-threaded builds**: Both Docker and manual builds default to `WITH_OPENMP=OFF` to match the single-threaded evaluation in the paper for consistent timing comparisons across radix configurations. To explore multi-threaded performance, rebuild with OpenMP enabled:
+> ```bash
+> # Docker
+> cd artifacts && WITH_OPENMP=ON docker compose build quick && docker compose run --rm quick
+>
+> # Manual (replace -DWITH_OPENMP=OFF with -DWITH_OPENMP=ON in the cmake command)
+> ```
+> Absolute timings will decrease, but relative trends across radix configurations should remain consistent.
 
 ### Option 2: Manual Installation
 
@@ -195,9 +208,6 @@ Every benchmark verifies correctness by comparing encrypted computation results 
 - `✓ Result is CORRECT!` in benchmark outputs
 - `Expected count == Encrypted count` in query results
 - No `✗ Result is INCORRECT!` messages
-
-### Quick Mode Limitations
-Quick mode (`run.sh --quick`) uses a small ring dimension (N=2^7) with minimal SIMD parallelism, so trends may appear distorted. Run `run.sh` without flags for accurate reproduction.
 
 ## File Structure
 

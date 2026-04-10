@@ -1,6 +1,9 @@
 services:
   quick:
-    build: ..
+    build:
+      context: ..
+      args:
+        WITH_OPENMP: ${WITH_OPENMP:-OFF}
     command: ./artifacts/run.sh --quick
     volumes:
       - ./results_quick:/apex/artifacts/results_quick
@@ -8,7 +11,10 @@ services:
       - ./plot/data_quick:/apex/artifacts/plot/data_quick
 
   full:
-    build: ..
+    build:
+      context: ..
+      args:
+        WITH_OPENMP: ${WITH_OPENMP:-OFF}
     command: ./artifacts/run.sh
     volumes:
       - ./results_full:/apex/artifacts/results_full
