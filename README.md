@@ -92,6 +92,23 @@ Example execution:
 - **pattern_match.cpp**: String pattern matching with wildcard support
 - **ciphertext-size.cpp**: Analysis of encrypted string and integer storage requirements
 
+## Citation
+
+If you use APEX in your research, please cite our paper:
+
+> W. Chen, Q. Hu, S.-M. Yiu, and H. Cui, "APEX: Accurate Parallel Expressive Homomorphic Execution for Encrypted Databases," in *2026 IEEE Symposium on Security and Privacy (SP)*, 2026, pp. 3111–3129. doi: 10.1109/SP63933.2026.00173.
+
+```bibtex
+@inproceedings{chen2026apex,
+  title     = {{APEX}: Accurate Parallel Expressive Homomorphic Execution for Encrypted Databases},
+  author    = {Chen, Wei and Hu, Qi and Yiu, Siu-Ming and Cui, Heming},
+  booktitle = {2026 IEEE Symposium on Security and Privacy (SP)},
+  year      = {2026},
+  pages     = {3111--3129},
+  doi       = {10.1109/SP63933.2026.00173},
+}
+```
+
 ## License
 
 BSD 2-Clause License. See [LICENSE](LICENSE) for details.
